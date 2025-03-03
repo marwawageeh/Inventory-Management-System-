@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="MyApp - Inventory Management System" />
+    <meta name="author" content="Your Name" />
+    <title>MyApp</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap) -->
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/all.min.css" rel="stylesheet" /> <!-- Font Awesome icons -->
+    <style>
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 1rem;
+        }
+
+        .navbar-nav .nav-item.active .nav-link {
+            color: #fff;
+            background-color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Responsive navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container px-5">
+            <a class="navbar-brand" href="#"> Dress Store </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <li>
+                <!-- خانة البحث في الجانب الأيسر -->
+                <div class="search-small ">
+                    <input type="text" id="searchQuery" class="form-control" placeholder="Search..." onkeyup="performSearch()">
+                </div>
+
+            </li>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "home" ? "active" : "")"
+                           asp-action="index" asp-controller="home">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "sale" ? "active" : "")"
+                           asp-action="CreateSaleWithCustomer" asp-controller="sale">Payment</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "category" ? "active" : "")"
+                           asp-action="index" asp-controller="category">Category</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "product" ? "active" : "")"
+                           asp-action="index" asp-controller="product">Product</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "customer" ? "active" : "")"
+                           asp-action="index" asp-controller="customer">Customer</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "sale" ? "active" : "")"
+                           asp-action="index" asp-controller="sale">Sale</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "supplier" ? "active" : "")"
+                           asp-action="index" asp-controller="supplier">Supplier</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "purchas" ? "active" : "")"
+                           asp-action="index" asp-controller="purchas">Purchas</a>
+                    </li>
+
+
+
+                </ul>
+            </div>
+        </div>
+        <script>
+            // JavaScript function to perform search
+            function performSearch() {
+                var query = document.getElementById("searchQuery").value.toLowerCase();
+                var rows = document.querySelectorAll("tbody tr");
+
+                rows.forEach(function (row) {
+                    var nameCell = row.querySelector("td:nth-child(2)").textContent.toLowerCase();
+                    if (nameCell.includes(query)) {
+                        row.style.display = ""; // Display the row if it matches the search
+                    } else {
+                        row.style.display = "none"; // Hide the row if it doesn't match the search
+                    }
+                });
+            }
+        </script>
+    </nav>
+    <div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-1 fixed-bottom">
+        <p>&copy; 2024 Marwa_wageeh's App.</p>
+    </footer>
+
+    <!-- Bootstrap core JS -->
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+﻿@model Purchas
+@{
+}
+
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 align-items-center my-5">
+        <div class="col-lg-6 mx-auto">
+            <h2 class="text-center mb-4">Are you sure you want to delete the purchase with ID: @Model.Id?</h2>
+            <br />
+            <div class="text-center">
+                <form asp-action="Delete" method="post">
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                </form>
+            </div>
+            <br />
+            <div class="text-center">
+                <h4>
+                    <a asp-action="Index" class="btn btn-secondary">Go to List</a>
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>

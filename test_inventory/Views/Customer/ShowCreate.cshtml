@@ -1,0 +1,33 @@
+﻿@{
+}
+
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 align-items-center my-5">
+        <h2>Add New Customer</h2>
+
+        <form action="/customer/create" method="post">
+
+            <div class="mb-3">
+                <label for="Name" class="form-label">Name:</label>
+                <input type="text" name="Name" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="Address" class="form-label">Address:</label>
+                <input type="text" name="Address" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="ContactInfo" class="form-label">Contact Info:</label>
+                <input type="text" name="ContactInfo" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="Phone" class="form-label">Phone:</label>
+                <input type="text" name="Phone" class="form-control" required />
+            </div>
+
+            <input type="submit" value="Add" class="btn btn-primary" />
+        </form>
+    </div>
+</div>

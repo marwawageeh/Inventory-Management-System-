@@ -1,0 +1,65 @@
+﻿@model Sale
+@{
+}
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 align-items-center my-5">
+        <div class="col-lg-6 mx-auto">
+            <h2 class="text-center mb-4">Add Sale</h2>
+
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div> <!-- Validation Summary -->
+                <!-- Quantity Input -->
+                <div class="mb-3">
+                    <label asp-for="Quantity" class="form-label">Quantity:</label>
+                    <input asp-for="Quantity" class="form-control" required />
+                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                </div>
+
+                <!-- Date Input -->
+                <div class="mb-3">
+                    <label asp-for="SaleDate" class="form-label">Date:</label>
+                    <input asp-for="SaleDate" class="form-control" type="date" required />
+                    <span asp-validation-for="SaleDate" class="text-danger"></span>
+                </div>
+
+                <!-- Product Selection -->
+                <div class="mb-3">
+                    <label asp-for="ProductId" class="form-label">Product:</label>
+                    <select asp-for="ProductId" class="form-select" required>
+                        <option value="">-- Choose a product --</option>
+                        @foreach (var item in ViewBag.pro)
+                        {
+                            <option value="@item.Id">@item.ProductName</option>
+                        }
+                    </select>
+                    <span asp-validation-for="ProductId" class="text-danger"></span>
+                </div>
+
+                <!-- Customer Selection -->
+                <div class="mb-3">
+                    <label asp-for="CustomerId" class="form-label">Customer:</label>
+                    <select asp-for="CustomerId" class="form-select" required>
+                        <option value="">-- Choose a customer --</option>
+                        @foreach (var item in ViewBag.cus)
+                        {
+                            <option value="@item.Id">@item.Name</option> <!-- عرض اسم العميل هنا -->
+                        }
+                    </select>
+                    <span asp-validation-for="CustomerId" class="text-danger"></span>
+                </div>
+
+                
+
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <input type="submit" value="Add" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts for Bootstrap and jQuery (if needed) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>

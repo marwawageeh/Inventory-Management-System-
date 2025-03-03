@@ -1,0 +1,38 @@
+﻿@model test_inventory.ViewModel.SaleCustomerViewModel
+
+<div class="container">
+    <br />
+    <h2>Payment Receipt</h2>
+    <hr />
+
+    <p><strong>Quantity:</strong> @Model.Quantity.ToString()</p>
+    <p><strong>Customer Name:</strong> @Model.CustomerName</p>
+    <p><strong>Customer ID:</strong> @Model.CustomerId.ToString()</p>
+    <p><strong>Sale Date:</strong> @Model.SaleDate.ToShortDateString()</p>
+    <p><strong>Payment Method:</strong> @Model.PaymentMethod</p>
+
+    <hr />
+    <button onclick="downloadReceipt()" class="btn btn-success">Download Receipt (CSV)</button>
+</div>
+
+<script>
+    function downloadReceipt() {
+        const receiptData = [
+            "Product Id,Quantity,Customer Name,Customer ID,Sale Date",
+            "@Model.ProductId.ToString(),@Model.Quantity.ToString(),@Model.CustomerName,@Model.CustomerId.ToString(),@Model.SaleDate.ToShortDateString()"
+        ].join("\n");
+
+        const blob = new Blob([receiptData], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+
+        const link = document.createElement('a');
+        link.setAttribute('href', url);
+        link.setAttribute('download', 'sale_receipt.csv');
+        link.style.display = 'none';
+
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+</script>

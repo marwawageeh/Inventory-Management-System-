@@ -1,0 +1,28 @@
+﻿@model Sale
+@{
+}
+
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 align-items-center my-5">
+        <div class="col-lg-6 mx-auto text-center">
+            <!-- Confirmation Message -->
+            <h2 class="text-danger">Are you sure you want to delete the product with ID: @Model.Id?</h2>
+            <p class="text-muted">This action cannot be undone.</p>
+
+            <!-- Delete Confirmation Form -->
+            <form asp-action="Delete" method="post" class="my-4">
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <a asp-action="Index" class="btn btn-secondary ms-3">Cancel</a>
+            </form>
+
+            <!-- Link to Go Back to List -->
+            <h4 class="mt-4">
+                <a asp-action="Index" class="text-primary">Go to Product List</a>
+            </h4>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts for Bootstrap and jQuery (if needed) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
