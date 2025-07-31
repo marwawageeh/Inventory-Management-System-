@@ -1,0 +1,8 @@
+# Ignore frontend files in language stats
+*.css linguist-detectable=false
+*.js linguist-detectable=false
+*.html linguist-detectable=false
+*.json linguist-detectable=false
+*.ts linguist-detectable=false
+*.scss linguist-detectable=false
+*.less linguist-detectable=false
